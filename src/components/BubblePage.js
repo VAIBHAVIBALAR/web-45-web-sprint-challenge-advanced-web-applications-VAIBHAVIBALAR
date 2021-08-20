@@ -10,7 +10,6 @@ const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true)
-  const { id } =  useParams();
 
   useEffect(()=>{
     let mounted = true
@@ -19,7 +18,7 @@ const BubblePage = () => {
     if(mounted){
       setLoading(false)
     setColors(newColors);
-
+    console.log(colors)
     }
     }
     getColors()
