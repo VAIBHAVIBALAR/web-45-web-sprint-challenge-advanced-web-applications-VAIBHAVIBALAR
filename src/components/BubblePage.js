@@ -38,11 +38,18 @@ const BubblePage = () => {
     axiosWithAuth().put(`/colors/${editColor.id}`, editColor)
     .then(res =>{
       console.log(res.data)
-      setEditing(false)
+      toggleEdit(false)
     })
   };
 
   const deleteColor = (colorToDelete) => {
+    console.log(colorToDelete)
+    axiosWithAuth().delete(`/colors/${colorToDelete.id}`)
+    .then(res =>{
+      console.log(res)
+      toggleEdit(true)
+      toggleEdit(false)
+    })
   };
 
   return (
