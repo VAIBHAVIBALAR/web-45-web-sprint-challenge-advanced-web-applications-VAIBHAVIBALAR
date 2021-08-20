@@ -12,7 +12,9 @@ const Login = () => {
 
   const [error, setError] = useState("")
   //replace with error state
+
   const { push } = useHistory();
+  
   const changeHandler = (e) =>{
     setAuth({
       ...auth,
@@ -25,10 +27,8 @@ const Login = () => {
     e.preventDefault();
     axios.post('http://localhost:5000/api/login', auth)
     .then(res =>{
-      console.log(res)
       if(res.status == 200){
         localStorage.setItem("token", res.data.payload);
-        console.log(res.data)
         push('/bubblespage')
       }
     })
@@ -37,7 +37,6 @@ const Login = () => {
       if(res.status == 403){
         setError(res.data.error)
       }
-      console.log("Error while login API call. Error:", err)
     })
 
   }

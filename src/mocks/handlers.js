@@ -92,7 +92,6 @@ const correctCredientials = {
 
 
 function authenticator(req) {
-  console.log(req)
   const { authorization } = req.headers.map;
   return (authorization === correctCredientials.token);
 }
@@ -134,9 +133,7 @@ export const handlers = [
 
   // Handles a GET /user request
   rest.get(`${urlBase}/colors`, (req, res, ctx) => {
-    console.log("COLORS")
     if (authenticator(req)) {
-      console.log("In if")
       return res(
         ctx.status(200),
         ctx.json(colors)
