@@ -26,9 +26,18 @@ const Login = () => {
     axios.post('http://localhost:5000/api/login', auth)
     .then(res =>{
       console.log(res)
-      localStorage.getItem("token", res.data.payload);
-      push('/bubblepage')
-
+      if(res.status == 200){
+        localStorage.setItem("token", res.data.payload);
+        console.log(res.data)
+        push('/bubblespage')
+      }
+    })
+    .catch(err =>{
+      const res = err.response
+      if(res.status == 403){
+        setError(res.data.error)
+      }
+      console.log("Error while login API call. Error:", err)
     })
 
   }

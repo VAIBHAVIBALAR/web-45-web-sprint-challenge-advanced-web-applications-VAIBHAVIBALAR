@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import BubblePage from "./components/BubblePage";
 
 import Login from "./components/Login";
 import "./styles.scss";
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -14,11 +16,15 @@ function App() {
         </header>
       </div>
       <Switch>
+        <PrivateRoute exact path="/bubblespage" component={BubblePage} />
         <Route exact path="/">
           <Login/>
         </Route>
         <Route exact path="/login">
            <Login/> 
+        </Route>
+        <Route exact path="/bubblespage">
+          <BubblePage/>
         </Route>
       </Switch>
     </Router>
