@@ -18,7 +18,7 @@ const BubblePage = () => {
     if(mounted){
       setLoading(false)
     setColors(newColors);
-    console.log(colors)
+    console.log("newColors", newColors)
     }
     }
     getColors()
